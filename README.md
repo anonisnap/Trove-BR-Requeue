@@ -6,9 +6,20 @@ Want to get the coins, but not put in the work?
 
 Well! Here is the solution! _or, just a solution_
 
+## Contents
+
+- What is it?
+- Starting it
+- How does it work?
+- It's not working for me, what do I do?
+
 ## What is it?
 
 The **Trove BR Requeue** script is a fairly simple Python Script, making use of Image Recognition to keep track of whether or not you're currently in an ongoing BR game, whether it has ended, or if you've just started a new one!
+
+## Starting it
+
+To start the script, simply run the `Bomber Royale Requeue.bat` batch script. If you have Python 3.9 (or maybe newer) the rest should work by itself
 
 ## How does it work?
 
