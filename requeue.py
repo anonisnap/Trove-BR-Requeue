@@ -13,8 +13,8 @@ import pyautogui as pag
 import keyboard as kb
 from time import sleep
 
-requeue_img = 'br_requeue.png'
-new_game_img = 'br_new_game.png'
+requeue_img = 'images/br_requeue.png'
+new_game_img = 'images/br_new_game.png'
 
 # Screen Offset, incase you're struggling with multiple monitors
 screen_offset = [-1080, -446]
