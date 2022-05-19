@@ -24,4 +24,4 @@ if __name__ == '__main__':
         print(f'Debug: {debug}')
     except:
         pass
-    main(debug)
+    main(debug.lower() == 'true')
