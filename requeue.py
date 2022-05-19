@@ -19,6 +19,7 @@ def main(debug_mode: bool = True):
 
 # STARTS THE SCRIPT
 if __name__ == '__main__':
+    debug = 'true'
     try:
         debug = sys.argv[1]
         print(f'Debug: {debug}')
