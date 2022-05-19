@@ -1,5 +1,6 @@
 import array
 import string
+from tracemalloc import start
 import pyautogui as pag
 import keyboard as kb
 import numpy as np
@@ -9,9 +10,9 @@ from python_imagesearch.imagesearch import imagesearch
 
 class BasicBot:
     # Class Initialisation / Setup
-    def __init__(self):
+    def __init__(self, started_in_debug_mode: bool = False):
         self.screen_offset = (0, 0)
-        self.debug_mode = False
+        self.debug_mode = started_in_debug_mode
         self.debug = debug_printer()
         return
 
@@ -20,7 +21,8 @@ class BasicBot:
         return
 
     def set_debug(self, on: bool = True):
-        print('> Turning on Debug Mode')
+        if (on):
+            print('> Turning on Debug Mode')
         self.debug_mode = on
         self.debug.set_debug(on)
         return
@@ -157,7 +159,8 @@ class debug_printer:
 
     def set_debug(self, on: bool = True):
         self.debug_enable = on
-        print(f'Debug Mode: {self.debug_enable}')
+        if (on):
+            print(f'Debug Mode: {self.debug_enable}')
         return
 
     def print(self, msg: string):

@@ -4,10 +4,10 @@ from Bots.TroveBot import BasicBot
 
 class RequeueBot(BasicBot):
     # Class Initialisation / Setup
-    def __init__(self):
+    def __init__(self, started_in_debug_mode):
         super().__init__()
         super().set_offset((-1080, -446))
-        super().set_debug()
+        super().set_debug(started_in_debug_mode)
         # Screen Interaction
         self.requeue_img = './images/br_requeue.png'
         self.new_game_img = './images/br_new_game.png'
