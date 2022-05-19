@@ -127,7 +127,7 @@ class BasicBot:
 
     # Bot Actions
 
-    def find_image(self, image: string, precision: float = 0.8):
+    def find_image(self, image: string, precision: float = 0.9):
         self.debug_print(f'\t> Searching for image: \'{image}\'')
         screen_location = imagesearch(image, precision)
         return screen_location
@@ -143,8 +143,6 @@ class BasicBot:
 
     # Internal Actions
     def __fix_offset(self, location: array):
-        print(f'Location: {type(location)}')
-        print(f'Offset  : {type(self.screen_offset)}')
         return np.add(location, self.screen_offset)
 
     # Debugging
