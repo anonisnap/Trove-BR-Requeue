@@ -1,0 +1,2 @@
+This is the Information Text
+This is supposed to be a Warning
