@@ -6,7 +6,7 @@ class RequeueBot(BasicBot):
     # Class Initialisation / Setup
     def __init__(self):
         super().__init__()
-        super().set_offset({-1080, -446})
+        super().set_offset((-1080, -446))
         super().set_debug()
         # Screen Interaction
         self.requeue_img = './images/br_requeue.png'

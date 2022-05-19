@@ -10,12 +10,12 @@ from python_imagesearch.imagesearch import imagesearch
 class BasicBot:
     # Class Initialisation / Setup
     def __init__(self):
-        self.screen_offset = [0, 0]
+        self.screen_offset = (0, 0)
         self.debug_mode = False
         self.debug = debug_printer()
         return
 
-    def set_offset(self, offset: array):
+    def set_offset(self, offset: tuple):
         self.screen_offset = offset
         return
 
@@ -28,7 +28,6 @@ class BasicBot:
     # User Imitation
     def send_message(self, message: string, channel: string = '/2'):
         self.debug_print(f'\t> Sending a Message: \'{message}\'')
-        if(self.debug_mode): return
         kb.send('enter')
         kb.write(channel)
         kb.send('enter')
@@ -40,7 +39,6 @@ class BasicBot:
 
     def click_location(self, pos: array, move_time: float = 0):
         self.debug_print(f'\t> Moving to location: \'{pos}\'')
-        if(self.debug_mode): return
         oldX, oldY = pag.position()
         pos = self.__fix_offset(pos)
         pag.moveTo(pos[0], pos[1], duration=move_time)
@@ -56,6 +54,8 @@ class BasicBot:
 
     # Internal Actions
     def __fix_offset(self, location: array):
+        print(f'Location: {type(location)}')
+        print(f'Offset  : {type(self.screen_offset)}')
         return np.add(location, self.screen_offset)
 
     # Debugging
