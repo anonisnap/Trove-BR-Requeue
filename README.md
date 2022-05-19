@@ -1,4 +1,4 @@
-# Trove Bomber Royale Requeue
+# Trove Bomber Royale Requeue (This Readme is not Up To Date)
 
 Getting tired of playing Bomber Royale in Trove?
 
