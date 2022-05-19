@@ -11,6 +11,7 @@ class RequeueBot(BasicBot):
         # Screen Interaction
         self.requeue_img = './images/br_requeue.png'
         self.new_game_img = './images/br_new_game.png'
+        self.reconnect_img = './images/trove_reconnect.png'
         # Player Interaction
         self.new_game_msg = 'Please kill Bots / AFK before other Players vv3'
         self.game_end_msg = 'GG WP - Cya Later! \o'
@@ -18,6 +19,7 @@ class RequeueBot(BasicBot):
         self.respawn_thread = None
         self.isIngame = False
 
+    # Requeue Actions
     def requeue(self):
         super().debug_print('> Attempting to Requeue')
         # Find Image for Requeue
@@ -53,8 +55,17 @@ class RequeueBot(BasicBot):
         self.isIngame = True
         return
 
+    def reconnect(self):
+        super().debug_print('> Attempting to Reconnect to Trove Servers')
+        reconnect_image_location = super().find_image(self.reconnect_img)
+        if(reconnect_image_location[0] == -1):
+            return
+        super().debug_print('> Reconnecting to Servers')
+        super().click_location(reconnect_image_location)
+
     def run(self, cooldown_timer: int = 5):
         while(True):
             sleep(cooldown_timer)
             self.new_game_started()
             self.requeue()
+            self.reconnect()
