@@ -12,6 +12,8 @@ class RequeueBot(BasicBot):
         self.requeue_img = './images/br_requeue.png'
         self.new_game_img = './images/br_new_game.png'
         self.reconnect_img = './images/trove_reconnect.png'
+        self.button_yes_img = './images/btn_yes.png'
+        self.queue_for_bomber_royale_img = './images/queue_for_br.png'
         # Player Interaction
         self.new_game_msg = 'Please kill Bots / AFK before other Players vv3'
         self.game_end_msg = 'GG WP - Cya Later! \o'
@@ -48,7 +50,9 @@ class RequeueBot(BasicBot):
         if(new_game_image_location[0] == -1):
             super().debug_print('> Cannot find image for New Game')
             return
-        super().debug_print('> Greeted new players')
+        # Sleep Timer to allow more players to join
+        sleep(5)
+        super().debug_print('> Greeting new players')
         # Chat with Players
         super().send_message(self.new_game_msg)
         # Set ingame to True
@@ -64,7 +68,28 @@ class RequeueBot(BasicBot):
         super().click_location(reconnect_image_location)
         return
 
+    def queue_for_bomber_royale(self):
+        super().queue_for_bomber_royale()
+        for i in range(5):
+            super().debug_print(f'> Queueing for Bomber Royale (Attempt #{i})')
+            queue_for_bomber_location = super().find_image(self.queue_for_bomber_royale_img)
+            if(queue_for_bomber_location[0] != -1):
+                has_queued = self.press_yes()
+                if(has_queued):
+                    return
+            sleep(0.5)
+        return
+
+    def press_yes(self):
+        yes_location = super().find_image(self.button_yes_img)
+        if(yes_location[0] != -1):
+            super().click_location(yes_location)
+            return True
+        return False
+
     def run(self, cooldown_timer: int = 5):
+        sleep(cooldown_timer)
+        self.queue_for_bomber_royale()
         while(True):
             self.new_game_started()
             self.requeue()
