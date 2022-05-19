@@ -62,10 +62,11 @@ class RequeueBot(BasicBot):
             return
         super().debug_print('> Reconnecting to Servers')
         super().click_location(reconnect_image_location)
+        return
 
     def run(self, cooldown_timer: int = 5):
         while(True):
-            sleep(cooldown_timer)
             self.new_game_started()
             self.requeue()
             self.reconnect()
+            sleep(cooldown_timer)

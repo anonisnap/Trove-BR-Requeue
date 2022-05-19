@@ -9,7 +9,7 @@
 '''
 
 import sys
-from RequeueBot import RequeueBot
+from Bots.RequeueBot import RequeueBot
 
 
 def main(debug_mode: bool = True):
