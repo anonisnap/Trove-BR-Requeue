@@ -13,6 +13,7 @@ type info.txt
     @ECHO "Bot is turning on. Please ensure Trove is opened within 5 seconds"
     @ECHO on
     python requeue.py False
+    @pause
 exit
 
 :continue_no

@@ -1,10 +1,10 @@
 import array
+import json
 import string
-from tracemalloc import start
 import pyautogui as pag
 import keyboard as kb
 import numpy as np
-from time import sleep
+from time import sleep, time
 from python_imagesearch.imagesearch import imagesearch
 
 
@@ -14,10 +14,15 @@ class BasicBot:
         self.screen_offset = (0, 0)
         self.debug_mode = started_in_debug_mode
         self.debug = debug_printer()
+        self.timer = timer()
         return
 
     def set_offset(self, offset: tuple):
         self.screen_offset = offset
+        return
+
+    def set_timer(self, duration: int):
+        self.timer = timer(duration)
         return
 
     def set_debug(self, on: bool = True):
@@ -147,7 +152,15 @@ class BasicBot:
     def __fix_offset(self, location: array):
         return np.add(location, self.screen_offset)
 
+    def start_timer(self, duration):
+        self.timer.start_timer(duration)
+        return
+
+    def check_timer(self):
+        return self.timer.check_timer()
+
     # Debugging
+
     def debug_print(self, msg: string):
         self.debug.print(msg)
         return
@@ -167,3 +180,25 @@ class debug_printer:
         if(self.debug_enable):
             print(msg)
         return
+
+
+class timer():
+    def __init__(self, time_in_seconds: float = 0):
+        self.duration = time_in_seconds
+        self.start_time = None
+        return
+
+    def start_timer(self, duration: float = 0):
+        self.duration = duration
+        self.start_time = time()
+        return
+
+    def check_timer(self):
+        end_time = (self.start_time + self.duration)
+        return (time() > end_time)
+
+
+class setting_reader:
+    def get_screen_offset():
+        settings_json_file = open('settings.json')
+        setting_dict = json.load(settings_json_file)
