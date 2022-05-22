@@ -2,10 +2,13 @@ import array
 import json
 import string
 import pyautogui as pag
-import keyboard as kb
 import numpy as np
-from time import sleep, time
+from time import time
 from python_imagesearch.imagesearch import imagesearch
+
+from Bots.Modules.Chat import Chat
+from Bots.Modules.ConsoleDebugger import ConsoleDebugger
+from Bots.Modules.Hotkeys import Hotkeys
 
 
 class BasicBot:
@@ -13,8 +16,10 @@ class BasicBot:
     def __init__(self, started_in_debug_mode: bool = False):
         self.screen_offset = (0, 0)
         self.debug_mode = started_in_debug_mode
-        self.debug = debug_printer()
+        self.debug = ConsoleDebugger()
         self.timer = timer()
+        self.game_chat = Chat()
+        self.hotkey_manager = Hotkeys()
         return
 
     def set_offset(self, offset: tuple):
@@ -35,13 +40,6 @@ class BasicBot:
     # User Imitation
     def send_message(self, message: string, channel: string = '/2'):
         self.debug_print(f'\t> Sending a Message: \'{message}\'')
-        kb.send('enter')
-        kb.write(channel)
-        kb.send('enter')
-        sleep(0.2)
-        kb.send('enter')
-        kb.write(message)
-        kb.send('enter')
         return
 
     def click_location(self, pos: array, move_time: float = 0):
@@ -55,81 +53,81 @@ class BasicBot:
 
     # Opening Menus
     def open_menu_cheatsheet(self):
-        self.open_menu('v')
+        self.hotkey_manager.open_menu('v')
         return
 
     # Character
     def open_character_sheet(self):
-        self.open_menu('c')
+        self.hotkey_manager.open_menu('c')
         return
 
     def open_inventory(self):
-        self.open_menu('b')
+        self.hotkey_manager.open_menu('b')
         return
 
     def open_class_select(self):
-        self.open_menu('j')
+        self.hotkey_manager.open_menu('j')
         return
 
     # Progression
     def open_leaderboards(self):
-        self.open_menu('k')
+        self.hotkey_manager.open_menu('k')
         return
 
     def open_collections(self):
-        self.open_menu('y')
+        self.hotkey_manager.open_menu('y')
         return
 
     # Activities
     def open_adventures(self):
-        self.open_menu('i')
+        self.hotkey_manager.open_menu('i')
         return
 
     def queue_for_bomber_royale(self):
-        self.open_menu('b', 'ctrl')
+        self.hotkey_manager.open_menu('b', 'ctrl')
         return
 
     # Shopping
     def open_store(self):
-        self.open_menu('n')
+        self.hotkey_manager.open_menu('n')
         return
 
     def open_marketplace(self):
-        self.open_menu('u')
+        self.hotkey_manager.open_menu('u')
         return
 
     # Social
     def open_clubs(self):
-        self.open_menu('p')
+        self.hotkey_manager.open_menu('p')
         return
 
     def open_friends(self):
-        self.open_menu('o')
+        self.hotkey_manager.open_menu('o')
         return
 
     def open_liked_worlds(self):
-        self.open_menu('å')
+        self.hotkey_manager.open_menu('å')
         return
 
     # World
     def open_atlas(self):
-        self.open_menu('a', 'ctrl')
+        self.hotkey_manager.open_menu('a', 'ctrl')
         return
 
     def open_cornerstones(self):
-        self.open_menu('¨')
+        self.hotkey_manager.open_menu('¨')
         return
 
     def open_map(self):
-        self.open_menu('m')
+        self.hotkey_manager.open_menu('m')
         return
 
     def open_welcome(self):
-        self.open_menu('F1')
+        self.hotkey_manager.open_menu('F1')
         return
 
     def open_claims(self):
-        self.open_menu('l')
+        self.hotkey_manager.open_menu('l')
         return
 
     # Bot Actions
@@ -139,14 +137,6 @@ class BasicBot:
         screen_location = imagesearch(image, precision)
         return screen_location
 
-    def open_menu(self, menu_hotkey: chr, modifier_key: string = 'none'):
-        if(modifier_key == 'none'):
-            kb.send(menu_hotkey)
-        else:
-            kb.send(modifier_key, do_release=False)
-            kb.send(menu_hotkey)
-            kb.send(modifier_key, do_press=False)
-        return
 
     # Internal Actions
     def __fix_offset(self, location: array):
@@ -166,20 +156,6 @@ class BasicBot:
         return
 
 
-class debug_printer:
-    def __init__(self):
-        self.debug_enable = False
-
-    def set_debug(self, on: bool = True):
-        self.debug_enable = on
-        if (on):
-            print(f'Debug Mode: {self.debug_enable}')
-        return
-
-    def print(self, msg: string):
-        if(self.debug_enable):
-            print(msg)
-        return
 
 
 class timer():

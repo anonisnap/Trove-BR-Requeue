@@ -18,10 +18,13 @@ def main(debug_mode: bool = True):
 
 # STARTS THE SCRIPT
 if __name__ == '__main__':
-    debug = 'true'
-    try:
+    try:     
         debug = sys.argv[1]
-        print(f'Debug: {debug}')
-    except:
-        pass
-    main(debug.lower() == 'true')
+        main(debug.lower() == 'true')
+        
+    except IndexError:
+        main(True)
+
+    except KeyboardInterrupt:
+        print('> Shutting down the RequeueBot')
+        sys.exit()
