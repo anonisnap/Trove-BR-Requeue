@@ -1,4 +1,5 @@
 import array
+import os
 import json
 import string
 from types import SimpleNamespace
@@ -150,8 +151,15 @@ class BasicBot:
         return self.timer.check_timer()
 
     def __set_settings(self) -> None:
-        with open('Bots/settings.json', 'r') as settings:
-            user_settings = (json.load(settings, object_hook=lambda d: SimpleNamespace(**d)))
+        file_path = 'Bots/settings.json'
+        if (not os.path.exists(file_path)) or os.stat(file_path).st_size == 0:
+            with open('Bots/settings.json', 'w') as new_settings_file:
+                self.debug_print('> Creating new Settings File')
+                new_settings = Settings()
+                json.dump(vars(new_settings), new_settings_file, indent=4)
+        with open(file_path, 'r') as settings:
+            user_settings = (
+                json.load(settings, object_hook=lambda d: SimpleNamespace(**d)))
             self.screen_offset = user_settings.screen_offset
             self.debug_print(
                 f'Offset : ({self.screen_offset[0]}, {self.screen_offset[1]})')
