@@ -5,7 +5,7 @@ class Hotkeys:
     def __init__(self) -> None:
         return
 
-    def open_menu(self, menu_hotkey: chr, modifier_key: string = 'none'):
+    def open_menu(self, menu_hotkey: chr, modifier_key: string = 'none') -> None:
         if(modifier_key == 'none'):
             kb.send(menu_hotkey)
         else:

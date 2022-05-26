@@ -6,7 +6,7 @@ class Chat:
     def __init__(self):
         return
 
-    def send_message(self, message: string, channel: string = '/2'):
+    def send_message(self, message: string, channel: string = '/2') -> None:
         kb.send('enter')
         kb.write(channel)
         kb.send('enter')
