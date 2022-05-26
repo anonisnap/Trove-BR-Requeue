@@ -13,7 +13,6 @@ from Bots.RequeueBot import RequeueBot
 
 def main(debug_mode: bool = True):
     bot = RequeueBot(debug_mode)
-    bot.set_debug(debug_mode)
     bot.run()
 
 # STARTS THE SCRIPT

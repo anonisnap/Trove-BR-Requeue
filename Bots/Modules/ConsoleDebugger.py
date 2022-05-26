@@ -11,7 +11,7 @@ class ConsoleDebugger:
     def set_debug(self, console_debug: bool = True):
         self.is_debug_mode = console_debug
         boolean_as_string = ('On', 'Off')[console_debug]
-        print(f'Turning Debug Mode {boolean_as_string}')
+        print(f'> Turning Debug Mode {boolean_as_string}')
         return
 
     def print(self, msg: string):

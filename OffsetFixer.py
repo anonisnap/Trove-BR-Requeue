@@ -26,11 +26,11 @@ def main() -> None:
 
 def inform_user() -> None:
     print('Please move your Cursor to the Top Left Corner, of your Left most Monitor')
-    sleep(1)
+    sleep(10)
     print('Wait for further notice...')
 
 
-def get_cursor_position() -> dict:
+def get_cursor_position() -> list:
     pos = pyautogui.position()
     print('Offset has been Measured. You are free to move your Cursor again')
     return pos

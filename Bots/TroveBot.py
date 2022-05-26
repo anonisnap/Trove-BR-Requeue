@@ -1,6 +1,7 @@
 import array
 import json
 import string
+from types import SimpleNamespace
 import pyautogui as pag
 import numpy as np
 from time import time
@@ -9,32 +10,31 @@ from python_imagesearch.imagesearch import imagesearch
 from Bots.Modules.Chat import Chat
 from Bots.Modules.ConsoleDebugger import ConsoleDebugger
 from Bots.Modules.Hotkeys import Hotkeys
+from Bots.Modules.Settings import Settings
 
 
 class BasicBot:
     # Class Initialisation / Setup
     def __init__(self, started_in_debug_mode: bool = False) -> None:
-        self.screen_offset = (0, 0)
+        # Initialise Variables
+        self.screen_offset = {'x': 0, 'y': 0}
         self.debug_mode = started_in_debug_mode
-        self.debug = ConsoleDebugger()
+        self.debug = ConsoleDebugger(self.debug_mode)
         self.timer = timer()
         self.game_chat = Chat()
         self.hotkey_manager = Hotkeys()
-        return
 
-    def set_offset(self, offset: tuple) -> None:
-        self.screen_offset = offset
+        #
+        self.__set_settings()
         return
 
     def set_timer(self, duration: int) -> None:
         self.timer = timer(duration)
         return
 
-    def set_debug(self, on: bool = True) -> None:
-        if (on):
-            print('> Turning on Debug Mode')
-        self.debug_mode = on
-        self.debug.set_debug(on)
+    def set_debug(self, set_on: bool = True) -> None:
+        self.debug_mode = set_on
+        self.debug.set_debug(set_on)
         return
 
     # User Imitation
@@ -137,8 +137,8 @@ class BasicBot:
         screen_location = imagesearch(image, precision)
         return screen_location
 
-
     # Internal Actions
+
     def __fix_offset(self, location: array) -> array:
         return np.add(location, self.screen_offset)
 
@@ -149,13 +149,19 @@ class BasicBot:
     def check_timer(self) -> bool:
         return self.timer.check_timer()
 
+    def __set_settings(self) -> None:
+        with open('Bots/settings.json', 'r') as settings:
+            user_settings = (json.load(settings, object_hook=lambda d: SimpleNamespace(**d)))
+            self.screen_offset = user_settings.screen_offset
+            self.debug_print(
+                f'Offset : ({self.screen_offset[0]}, {self.screen_offset[1]})')
+        return
+
     # Debugging
 
     def debug_print(self, msg: string) -> None:
         self.debug.print(msg)
         return
-
-
 
 
 class timer():
@@ -172,9 +178,3 @@ class timer():
     def check_timer(self) -> bool:
         end_time = (self.start_time + self.duration)
         return (time() > end_time)
-
-
-class setting_reader:
-    def get_screen_offset():
-        settings_json_file = open('settings.json')
-        setting_dict = json.load(settings_json_file)
