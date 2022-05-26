@@ -1,11 +1,7 @@
 {
-  // Time in seconds between Bot does the same stuff.
-  "loop_delay": 5,
-
-  // Offset for Monitor, useful for when the Main Monitor is not the Left Most Monitor.
-  // Use OffsetFixer.py to set this
-  "screen_offset": {
-    "x": -1080,
-    "y": -446
-  }
+    "loop_delay": 5,
+    "screen_offset": {
+        "x": 1050,
+        "y": 49
+    }
 }
