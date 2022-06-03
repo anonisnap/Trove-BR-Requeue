@@ -4,8 +4,9 @@ import json
 import string
 from types import SimpleNamespace
 import pyautogui as pag
+import keyboard as kb
 import numpy as np
-from time import time
+from time import sleep, time
 from python_imagesearch.imagesearch import imagesearch
 
 from Bots.Modules.Chat import Chat
@@ -41,6 +42,7 @@ class BasicBot:
     # User Imitation
     def send_message(self, message: string, channel: string = '/2') -> None:
         self.debug_print(f'\t> Sending a Message: \'{message}\'')
+        self.game_chat.send_message(message, channel)
         return
 
     def click_location(self, pos: array, move_time: float = 0) -> None:
@@ -50,6 +52,28 @@ class BasicBot:
         pag.moveTo(pos[0], pos[1], duration=move_time)
         pag.click()
         pag.moveTo(oldX, oldY)
+        return
+
+    def walk(self, direction: string, duration: float = 1) -> None:
+        # Extract the direction
+        direction = direction.lower()[0]
+
+        # Ensure direction is a movement key
+        if (direction != 'w' or direction != "d" or direction != "s" or direction != "d"):
+            self.debug_print(f'{direction} is not a direction')
+            return
+
+        # Press the Key for a defined time
+        self.debug_print(f'Walking {direction}')
+        kb.press(direction)
+        sleep(duration)
+        kb.release(direction)
+        return
+
+    def jump(self, direction: string = ""):
+        kb.send('space')
+        if (direction != ""):
+            self.walk(direction)
         return
 
     # Opening Menus
