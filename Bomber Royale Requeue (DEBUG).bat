@@ -5,14 +5,15 @@
 @TYPE disclaimer.txt
 
 :dislaimer_notice
-    set /P c="Are you sure you want to continue[Y/N]?"
+    set /P c="Are you sure you want to continue[Y/N]? "
     if /I "%c%" EQU "Y" goto :fix_offset
     if /I "%c%" EQU "N" goto :continue_no
     goto :fix_offset
 
 :fix_offset
+    @ECHO.
     @ECHO If you use Multiple Monitors, offset can be an issue for clicking
-    set /P c="Do you wish to fix your Offset[Y/N]?"
+    set /P c="Do you wish to fix your Offset[Y/N]? "
     if /I "%c%" EQU "Y" goto :offset_yes
     if /I "%c%" EQU "N" goto :continue_yes
 
