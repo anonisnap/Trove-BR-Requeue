@@ -6,6 +6,8 @@ Want to get the coins, but not put in the work?
 
 Well! Here is the solution! _or, just a solution_
 
+## Better Version is currently in progress. Check the other [Branch](https://github.com/anonisnap/Trove-BR-Requeue/tree/improved-bot-system)
+
 ## Contents
 
 - What is it?
