@@ -9,6 +9,7 @@ Well! Here is the solution! _or, just a solution_
 ## Contents
 
 - What is it?
+- Settings things up
 - Starting it
 - How does it work?
 - It's not working for me, what do I do?
@@ -17,9 +18,17 @@ Well! Here is the solution! _or, just a solution_
 
 The **Trove BR Requeue** script is a fairly simple Python Script, making use of Image Recognition to keep track of whether or not you're currently in an ongoing BR game, whether it has ended, or if you've just started a new one!
 
+## Setting things up
+
+To set things up, you'll need to have Python installed. On Windows, this is easily done with the Windows Store.
+
+Something about the Screenshots
+
+Maybe a visualisation of how
+
 ## Starting it
 
-To start the script, simply run the `Bomber Royale Requeue.bat` batch script. If you have Python 3.9 (or maybe newer) the rest should work by itself
+To start the script, simply run either of the `Bomber Royale Requeue.bat` batch scripts. If you have Python 3.9 (or maybe newer) the rest should work by itself
 
 ## How does it work?
 
@@ -27,6 +36,8 @@ The **Trove BR Requeue** script runs in the background, and every 5th second it 
 
 - br_requeue.png
 - br_new_game.png
+- btn_yes.png
+- queue_for_br.png
 
 If either of these were to be found, the script will either requeue you into another round, or send an informative message to the other players, asking them to kill the bots first
 
