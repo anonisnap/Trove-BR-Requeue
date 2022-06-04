@@ -1,4 +1,4 @@
-Bots/__pycache__
-Bots/Modules/__pycache__
-Bots/settings.json
+requeue_bot/Bots/__pycache__
+requeue_bot/Bots/Modules/__pycache__
+requeue_bot/Bots/settings.json
 test/*

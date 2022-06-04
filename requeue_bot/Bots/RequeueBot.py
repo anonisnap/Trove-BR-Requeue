@@ -8,11 +8,11 @@ class RequeueBot(BasicBot):
         super().__init__(started_in_debug_mode)
 
         # Screen Interaction
-        self.requeue_img = './images/br_requeue.png'
-        self.new_game_img = './images/br_new_game.png'
-        self.reconnect_img = './images/trove_reconnect.png'
-        self.button_yes_img = './images/btn_yes.png'
-        self.queue_for_bomber_royale_img = './images/queue_for_br.png'
+        self.requeue_img                    = 'requeue_bot/images/br_requeue.png'
+        self.new_game_img                   = 'requeue_bot/images/br_new_game.png'
+        self.reconnect_img                  = 'requeue_bot/images/trove_reconnect.png'
+        self.button_yes_img                 = 'requeue_bot/images/btn_yes.png'
+        self.queue_for_bomber_royale_img    = 'requeue_bot/images/queue_for_br.png'
 
         # Player Interaction
         self.new_game_msg = 'Please kill Bots / AFK before other Players vv3'

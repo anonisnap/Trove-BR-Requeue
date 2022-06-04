@@ -2,7 +2,7 @@
 
 @ECHO == [31mTrove Bomber Royale Requeue[0m ==
 
-@TYPE disclaimer.txt
+@TYPE requeue_bot\disclaimer.txt
 
 :dislaimer_notice
     set /P c="Are you sure you want to continue[Y/N]? "
@@ -19,15 +19,16 @@
 
 :continue_yes
     @PAUSE
-    @ECHO Bot is turning on. Please ensure Trove is opened within 5 seconds
+    @ECHO [31mBot is turning on. Please tab into Trove within 5 seconds
+    :: Set Focus as Trove Window if possible
     @ECHO on
-    @python requeue.py False
+    @python requeue_bot/requeue.py False
     @pause
 exit
 
 :offset_yes
     @ECHO Please follow the instructions
-    @python OffsetFixer.py
+    @python requeue_bot/OffsetFixer.py
 goto :continue_yes
 
 :continue_no
