@@ -19,7 +19,7 @@
 
 :continue_yes
     @PAUSE
-    @ECHO [31mBot is turning on. Please tab into Trove within 5 seconds
+    @ECHO [31mBot is turning on. Please tab into Trove within 5 seconds[0m
     @ECHO on
     @python requeue_bot/requeue.py True
     @pause
