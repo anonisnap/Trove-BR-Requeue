@@ -160,7 +160,10 @@ class BasicBot:
     def find_image(self, image: string, precision: float = 0.9) -> array:
         self.debug_print(f'\t> Searching for image: \'{image}\'')
         screen_location = imagesearch(image, precision)
-        return screen_location
+        if(screen_location[0] == -1): 
+            return None
+        else:
+            return screen_location
 
     # Internal Actions
 

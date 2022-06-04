@@ -18,6 +18,7 @@
     if /I "%c%" EQU "N" goto :continue_yes
 
 :continue_yes
+    @ECHO Bot will turn on when you're ready. Please ensure Trove has been launched
     @PAUSE
     @ECHO [31mBot is turning on. Please tab into Trove within 5 seconds[0m
     :: Set Focus as Trove Window if possible
