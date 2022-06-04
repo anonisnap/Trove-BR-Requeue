@@ -28,18 +28,24 @@ The `Bomber Royale Requeue` scripts both do the same, and function to let you ru
 
 ## How does it work?
 
-The **Trove BR Requeue** script runs in the background, and every 5th second it will search your entire screen (all monitors) in an attempt to find one of the supported images
+When the **Trove BR Requeue** script is run, it will first attempt to Queue for a Bomber Royale Game after which it will periodically search your entire screen (all monitors) for certain things. To do this, it has been provided some Screenshots which it will use to match up against.
 
-- br_requeue.png
-- br_new_game.png
-- btn_yes.png
-- queue_for_br.png
+When a match has been found, it will then decide what action to perform, which could be clicking _Reconnect_ or typing something in chat.
 
-If either of these were to be found, the script will either requeue you into another round, or send an informative message to the other players, asking them to kill the bots first
+When the Bot enters a new Bomber Royale Game, it will firstly Jump to get rid of the wings, making your character slightly more hidden. It will then type in chat, telling people to kill Bots and AFK people first
+
+| ![Bot telling players to kill Bots and AFK first](guide/kill_others_first.png) |
+| ------------------------------------------------------------------------------ |
+
+_Image taken with [TheSymbols Chat Mod](https://trovesaurus.com/mod=2649/thesymbols-chat-mod)_
+
+As the game progresses, players will be trying to kill eachother and you, but sometimes you may end up in a game with no active players. After being in a game for 2 minutes, the Bot will respawn, and then requeue for another game.
+
+Due to the amount of Bots found when playing Bomber Royale, it is often faster to settle for 8th place, and get a single coin then requeue, than waiting longer and trying to get 3 or 5 coins.
 
 ## Setting things up
 
-To set things up, you'll need to have Python installed. On Windows, this is easily done with the Windows Store.
+To set things up, you'll need to have [Python](https://www.python.org/) installed. On Windows, this is easily done with the [Microsoft Store](https://apps.microsoft.com/store/search/Python).
 
 Once Python has been installed, I suggest running the `Python Dependencies` file, which will take care of installing the needed Python Dependencies
 
@@ -49,28 +55,14 @@ After that, the bot should be able to run, though it may not work yet due to the
 
 Because the Python Bot uses Screenshots, you may need to change the screenshots yourself. Currently the Bot requires these following images to work. And you'll find them in the `requeue_bot/images` folder:
 
-<table>
-    <th>br_requeue</th>
-    <th>br_new_game</th>
-    <tr> 
-        <td align=center>
-            <img src=requeue_bot/images/br_requeue.png/>
-        </td>
-        <td align=center>
-            <img src=requeue_bot/images/br_new_game.png/>
-        </td>
-    </tr>
-    <th>btn_yes</th>
-    <th>queue_for_br</th>
-    <tr>
-        <td align=center>
-            <img src=requeue_bot/images/btn_yes.png/>
-        </td>
-        <td align=center>
-            <img src=requeue_bot/images/queue_for_br.png/>
-        </td>
-    </tr>
-<table>
+|                            Image                             |       File Name       |                                           Needed to work                                            |
+| :----------------------------------------------------------: | :-------------------: | :-------------------------------------------------------------------------------------------------: |
+|   ![Requeue Default](guide/default_images/br_requeue.png)    |   `br_requeue.png`    |                                                 Yes                                                 |
+|   ![Requeue Default](guide/default_images/br_new_game.png)   |   `br_new_game.png`   | No <br/> (Without this the bot won't say<br/>"please kill bots and afk first"<br/>to other players) |
+|  ![Requeue Default](guide/default_images/queue_for_br.png)   |  `queue_for_br.png`   |                                    No<br/>(Just queue yourself)                                     |
+|     ![Requeue Default](guide/default_images/btn_yes.png)     |     `btn_yes.png`     |                                      No (Just queue yourself)                                       |
+| ![Requeue Default](guide/default_images/trove_reconnect.png) | `trove_reconnect.png` |                              No<br/>(Can't reconnect to Trove Servers)                              |
+|  ![Requeue Default](guide/default_images/trove_crashed.png)  |  `trove_crashed.png`  |                        No<br/>(Can't restart game)<br/>[NOT IMPLEMENTED YET]                        |
 
 ### Changing the Screenshots
 
@@ -78,21 +70,25 @@ I'll guide you through the process of changing a screenshot. This example will b
 
 To replace any of the screenshots, the easiest way is to first find the file itself, Right Click it, and click Edit. This will open the image in Paint.
 
-![queueue_for_br in paint](guide/edit_image.png)
+| ![queueue_for_br in paint](guide/edit_image.png) |
+| ------------------------------------------------ |
 
 Then, head into Trove, and reproduce the screen where the screenshot was taken, for this it was simply attempting to queue for Bomber Royale.
 
 To get a Screenshot of this, on your Keyboard press `Alt` and `PrtSc`, _also known as Print Screen_.
 
-![Confirm Queue for Bomber Royale](guide/confirm_queue.png)
+| ![Confirm Queue for Bomber Royale](guide/confirm_queue.png) |
+| ----------------------------------------------------------- |
 
 Then go back to paint. Here you just Paste the image and then select the part you need with the Select Tool.
 
-![Selection Box around needed image](guide/paint_selection_box.png)
+| ![Selection Box around needed image](guide/paint_selection_box.png) |
+| ------------------------------------------------------------------- |
 
 And lastly press the Crop Tool.
 
-![Paint Cropping Tool](guide/crop_tool.png)
+| ![Paint Cropping Tool](guide/crop_tool.png) |
+| ------------------------------------------- |
 
 After this has been done, simply Save the file (`Ctrl + S`) and repeat for the other images.
 
