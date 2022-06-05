@@ -4,50 +4,116 @@ Getting tired of playing Bomber Royale in Trove?
 
 Want to get the coins, but not put in the work?
 
-Well! Here is the solution! _or, just a solution_
+Well! Here is the ~~bad~~ solution!
 
-## Better Version is currently in progress. Check the other [Branch](https://github.com/anonisnap/Trove-BR-Requeue/tree/improved-bot-system)
+## Table of Contents
 
-## Contents
-
-- What is it?
-- Starting it
-- How does it work?
-- It's not working for me, what do I do?
+- [What is it?](#what-is-it-)
+- [How does it work?](#how-does-it-work-)
+- [Setting things up](#setting-things-up)
+  - [Screenshots](#screenshots)
+  - [Changing the Screenshots](#changing-the-screenshots)
+- [Starting it](#starting-it)
+- [It's not working for me, what do I do?](#it-s-not-working-for-me--what-do-i-do-)
+  - [Bot is not clicking at all](#bot-is-not-clicking-at-all)
+  - [Clicking the Wrong Place](#clicking-the-wrong-place)
 
 ## What is it?
 
-The **Trove BR Requeue** script is a fairly simple Python Script, making use of Image Recognition to keep track of whether or not you're currently in an ongoing BR game, whether it has ended, or if you've just started a new one!
+In the main folder, you'll find 3 `.bat` scripts, the `Python Dependencies` script, and 2 different `Bomber Royale Requeue` scripts.
 
-## Starting it
+The `Python Dependencies` will let you easily download the needed Dependencies for Python.
 
-To start the script, simply run the `Bomber Royale Requeue.bat` batch script. If you have Python 3.9 (or maybe newer) the rest should work by itself
+The `Bomber Royale Requeue` scripts both do the same, and function to let you run the Python Bot.
 
 ## How does it work?
 
-The **Trove BR Requeue** script runs in the background, and every 5th second it will search your entire screen (all monitors) in an attempt to find one of the supported images
+When the **Trove BR Requeue** script is run, it will first attempt to Queue for a Bomber Royale Game after which it will periodically search your entire screen (all monitors) for certain things. To do this, it has been provided some Screenshots which it will use to match up against.
 
-- br_requeue.png
-- br_new_game.png
+When a match has been found, it will then decide what action to perform, which could be clicking _Reconnect_ or typing something in chat.
 
-If either of these were to be found, the script will either requeue you into another round, or send an informative message to the other players, asking them to kill the bots first
+When the Bot enters a new Bomber Royale Game, it will firstly Jump to get rid of the wings, making your character slightly more hidden. It will then type in chat, telling people to kill Bots and AFK people first
+
+| ![Bot telling players to kill Bots and AFK first](guide/kill_others_first.png) |
+| ------------------------------------------------------------------------------ |
+
+_Image taken with [TheSymbols Chat Mod](https://trovesaurus.com/mod=2649/thesymbols-chat-mod)_
+
+As the game progresses, players will be trying to kill eachother and you, but sometimes you may end up in a game with no active players. After being in a game for 2 minutes, the Bot will respawn, and then requeue for another game.
+
+Due to the amount of Bots found when playing Bomber Royale, it is often faster to settle for 8th place, and get a single coin then requeue, than waiting longer and trying to get 3 or 5 coins.
+
+## Setting things up
+
+To set things up, you'll need to have [Python](https://www.python.org/) installed. On Windows, this is easily done with the [Microsoft Store](https://apps.microsoft.com/store/search/Python).
+
+Once Python has been installed, I suggest running the `Python Dependencies` file, which will take care of installing the needed Python Dependencies
+
+After that, the bot should be able to run, though it may not work yet due to the bot using **Screenshots** to determine how to act
+
+### Screenshots
+
+Because the Python Bot uses Screenshots, you may need to change the screenshots yourself. Currently the Bot requires these following images to work. And you'll find them in the `requeue_bot/images` folder:
+
+|                            Image                             |       File Name       |                                           Needed to work                                            |
+| :----------------------------------------------------------: | :-------------------: | :-------------------------------------------------------------------------------------------------: |
+|   ![Requeue Default](guide/default_images/br_requeue.png)    |   `br_requeue.png`    |                                                 Yes                                                 |
+|   ![Requeue Default](guide/default_images/br_new_game.png)   |   `br_new_game.png`   | No <br/> (Without this the bot won't say<br/>"please kill bots and afk first"<br/>to other players) |
+|  ![Requeue Default](guide/default_images/queue_for_br.png)   |  `queue_for_br.png`   |                                    No<br/>(Just queue yourself)                                     |
+|     ![Requeue Default](guide/default_images/btn_yes.png)     |     `btn_yes.png`     |                                      No (Just queue yourself)                                       |
+| ![Requeue Default](guide/default_images/trove_reconnect.png) | `trove_reconnect.png` |                              No<br/>(Can't reconnect to Trove Servers)                              |
+|  ![Requeue Default](guide/default_images/trove_crashed.png)  |  `trove_crashed.png`  |                        No<br/>(Can't restart game)<br/>[NOT IMPLEMENTED YET]                        |
+
+### Changing the Screenshots
+
+I'll guide you through the process of changing a screenshot. This example will be using the `queue_for_br` image.
+
+To replace any of the screenshots, the easiest way is to first find the file itself, Right Click it, and click Edit. This will open the image in Paint.
+
+| ![queueue_for_br in paint](guide/edit_image.png) |
+| ------------------------------------------------ |
+
+Then, head into Trove, and reproduce the screen where the screenshot was taken, for this it was simply attempting to queue for Bomber Royale.
+
+To get a Screenshot of this, on your Keyboard press `Alt` and `PrtSc`, _also known as Print Screen_.
+
+| ![Confirm Queue for Bomber Royale](guide/confirm_queue.png) |
+| ----------------------------------------------------------- |
+
+Then go back to paint. Here you just Paste the image and then select the part you need with the Select Tool.
+
+| ![Selection Box around needed image](guide/paint_selection_box.png) |
+| ------------------------------------------------------------------- |
+
+And lastly press the Crop Tool.
+
+| ![Paint Cropping Tool](guide/crop_tool.png) |
+| ------------------------------------------- |
+
+After this has been done, simply Save the file (`Ctrl + S`) and repeat for the other images.
+
+## Starting it
+
+To start the script, simply run either of the `Bomber Royale Requeue` batch scripts. The Bot is being developped using Python 3.10 and uses a couple of Pip installed Libraries.
+
+Assuming Python has been installed, and the Libraries have been too, the Script should work when started.
 
 ## It's not working for me, what do I do?
 
-If the script is not working for you, it may be due to the images provided do not match your game, either caused by the graphics having changed or screen-resolution being different
+If the bot is not working, it can help to run it as Debug Mode. The bot will then inform you about what it is trying to do.
 
-### Images being different
+### Bot is not clicking at all
 
-To fix this, simply start Trove, enter Bomber Royale, and get similar screenshots to the ones provided, and then replace the provided ones with your own
+If the bot isn't clicking at all, and says it's attempting to find the images, it is likely unable to find them on the screen. This can be due to the Resolution being different, or some UI mods changing the buttons
 
-### Screen Offset
+To fix this, please follow the [guide](#changing-the-screenshots)
 
-If the cursor is clicking random places, and not on the buttons themselves, you may have to change the offset used for the clicking. Often occuring when using multiple monitors and the game isn't on the left-most monitor.
+### Clicking the Wrong Place
 
-To change the offset, go into requeue.py and look for `# RECALIBRATING OFFSET`. Below this you'll find a Function call that has been commented out, 
-```py
-# calculate_screen_offset()
-```
-simply remove the `#` infront and run the script again, follow the instructions (which simply tell you to move the cursor to the top left most point of your screen) and remember what the scripts tells your your Offset should be
-eg: `Offset should be: [-1080, -446]`
-Once it has given you an Offset, you have to go into the script again, requeue.py, and near the top, change the Offset, `screen_offset = [x, y]`, to be as told
+This issue can occur when either the Screenshots aren't precise enough, or the Screen Offset hasn't been correctly set.
+
+If the Cursor is clicking very differently from where it is supposed to, it is likely due to the Offset being off, to fix this, Run the bot again, and say "Yes" to setting the Offset
+
+If the Cursor is clicking closely to the buttons, but just barely to the Top Left of them, it is likely the Screenshots used being a little off.
+
+It is important, that the Screenshots Top-Left Corner is part of the button. To fix this, open up the screenshots and Crop it a little more, so the Top Left corner is part of the button

@@ -21,9 +21,8 @@
     @ECHO Bot will turn on when you're ready. Please ensure Trove has been launched
     @PAUSE
     @ECHO [31mBot is turning on. Please tab into Trove within 5 seconds[0m
-    :: Set Focus as Trove Window if possible
     @ECHO on
-    @python requeue_bot/requeue.py False
+    @python requeue_bot/requeue.py True
     @pause
 exit
 
