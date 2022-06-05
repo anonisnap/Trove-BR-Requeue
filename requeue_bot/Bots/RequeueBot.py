@@ -19,6 +19,7 @@ class RequeueBot(BasicBot):
         self.game_crash_img                 = 'requeue_bot/images/trove_crashed.png'
         self.player_count_10                = 'requeue_bot/images/player_count_10.png'
         self.player_count_9                 = 'requeue_bot/images/player_count_9.png'
+        self.player_count_head              = 'requeue_bot/images/player_count_head.png'
 
         # Player Interaction
         self.new_game_msg = 'Please kill Bots / AFK before other Players vv3'
@@ -71,6 +72,9 @@ class RequeueBot(BasicBot):
         # Set ingame to True
         self.isIngame = True
 
+        # Buffer Timer
+        sleep(10)
+
         return
 
     def check_if_respawn(self) -> None:
@@ -80,10 +84,14 @@ class RequeueBot(BasicBot):
         return
 
     def check_player_count(self) -> bool:
-        p_10 = super().find_image(self.player_count_10) != None
-        p_9 = super().find_image(self.player_count_9) != None
-        self.debug_print(f'\t\t>> Player Count 10: {p_10}\n\t\t>> Player Count 9: {p_9}')
+        p_10 = super().find_image(self.player_count_10)
+        p_9 = super().find_image(self.player_count_9)
+        self.debug_print(f'\t\t>> Player Count 10: {p_10 != None}\n\t\t>> Player Count 9: {p_9 != None}')
         if (p_10 or p_9):
+            return False
+        stuck_in_lobby = super().find_image(self.player_count_head) == None
+        if (stuck_in_lobby):
+            self.queue_for_bomber_royale()
             return False
         return True
 
@@ -123,10 +131,10 @@ class RequeueBot(BasicBot):
         return False
 
     def check_for_images(self) -> string:
-        if(super().find_image(self.requeue_img) != None): return "requeue"
-        if(super().find_image(self.new_game_img) != None): return "new_game"
-        if(super().find_image(self.reconnect_img) != None): return "reconnect"
-        if(super().find_image(self.game_crash_img) != None): return "game_crash"
+        if(super().find_image(self.requeue_img)): return "requeue"
+        if(super().find_image(self.new_game_img)): return "new_game"
+        if(super().find_image(self.reconnect_img)): return "reconnect"
+        if(super().find_image(self.game_crash_img)): return "game_crash"
         return None
 
 
