@@ -1,4 +1,5 @@
 import string
+from time import sleep
 import keyboard as kb
 
 class Hotkeys:
@@ -10,6 +11,8 @@ class Hotkeys:
             kb.send(menu_hotkey)
         else:
             kb.send(modifier_key, do_release=False)
+            sleep(.05)
             kb.send(menu_hotkey)
+            sleep(.05)
             kb.send(modifier_key, do_press=False)
         return
