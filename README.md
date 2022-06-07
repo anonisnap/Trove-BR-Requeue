@@ -55,7 +55,7 @@ After that, the bot should be able to run, though it may not work yet due to the
 
 Because the Python Bot uses Screenshots, you may need to change the screenshots yourself. Currently the Bot requires these following images to work. And you'll find them in the `requeue_bot/images` folder:
 
-|                            Image                             |       File Name       |                                           Needed to work                                            |
+|                            Image                             |       File Name       |                                          Required to work                                           |
 | :----------------------------------------------------------: | :-------------------: | :-------------------------------------------------------------------------------------------------: |
 |   ![Requeue Default](guide/default_images/br_requeue.png)    |   `br_requeue.png`    |                                                 Yes                                                 |
 |   ![Requeue Default](guide/default_images/br_new_game.png)   |   `br_new_game.png`   | No <br/> (Without this the bot won't say<br/>"please kill bots and afk first"<br/>to other players) |
