@@ -18,7 +18,7 @@ def main() -> None:
     # Set Offset to Location
     bot_settings.set_offset(offset[0], offset[1])
     # Dump into the Settings File
-    with open('Bots/settings.json', 'w') as settings_file:
+    with open('requeue_bot/Bots/settings.json', 'w') as settings_file:
         json.dump(vars(bot_settings), settings_file, indent=4)
     # Inform User the Offset has been set
     print(f'Your Offset has now been set as ({offset[0]}, {offset[1]})')
