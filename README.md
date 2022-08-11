@@ -1,4 +1,6 @@
-# Trove Bomber Royale Requeue
+# Trove Bomber Royale Requeue (Not Updated)
+
+_As of June 28, 2022. Changes were made to Bomber Royale, meaning you can no longer type `/respawn` to end the game quickly_
 
 Getting tired of playing Bomber Royale in Trove?
 
